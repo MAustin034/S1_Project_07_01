@@ -23,7 +23,10 @@
 
 /* Flex Layout Styles */
 body {
-    
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 
