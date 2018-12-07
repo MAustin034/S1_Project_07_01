@@ -22,22 +22,23 @@
 @import url("gp_designs.css");
 
 /* Flex Layout Styles */
+/* The body, sheet section, and article are now flexboxs with specified grow/shrink rates */
 body {
     display: -webkit-flex;
     display: flex;
-
-    -webkit-flex-flow: row wrap; 
+    -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
 }
-article { 
-    -webkit-flex: 3 1 301px; 
-    flex: 3 1 301px;
-  }
-  article { 
-    -webkit-flex: 1 3 180px; 
-    flex: 1 3 180px;
-  }
 
+section#sheet {
+    -webkit-flex: 3 1 301px;
+    flex: 3 1 301px;
+}
+
+article {
+    -webkit-flex: 1 3 180px;
+    flex: 1 3 180px;
+}
 
 
 
@@ -45,45 +46,54 @@ article {
 	Mobile Devices: 0 - 480 pixels
    ============================================
 */
+/* When pixel measurments get below 480, each image will take up 100% of the width and the nav will be below the panels and the footer below the nav*/
 @media only screen and (max-width: 480px) {
-    #sheet {
+    img.panel {
         width: 100%;
-    } 
-    .horizontal {
-        -webkit-order: 99;
-        order: 100%;
     }
 
-  }
+    nav.horizontal {
+        order: 99;
+    }
+
+    body>footer {
+        order: 100;
+    }
+}
+
+
 /* ===================================================
 	Tablet and Desktop Devices: Greater than 480 pixels
    ===================================================
 */
-@media only screen and (min-width: 481px ) {
-    .horizontal ul {
+/* After 480 pixels, the ul will now have a flexbox with a specified grow shrink for each list item, and each image will now take up a different width of the page based on what panel it is */
+@media only screen and (min-width:480px) {
+    nav.horizontal ul {
+        display: -webkit-flex;
         display: flex;
-        width: 100%;
+        -webkit-flex-flow: row nowrap;
+        flex-flow: row nowrap;
         height: 40px;
-
-       -webkit-flex-flow: nowrap;
-
-        flex-flow: nowrap;
     }
-    .horizontal ul li {
-        -webkit-flex : 1 1 auto;
+
+    nav.horizontal ul li {
+        -webkit-flex: 1 1 auto;
         flex: 1 1 auto;
     }
-    .size1 {
+
+    img.size1 {
         width: 100%;
     }
-    .size2 {
+
+    img.size2 {
         width: 60%;
     }
-    .size3 {
+
+    img.size3 {
         width: 40%;
     }
-    .size4 {
+
+    img.size4 {
         width: 30%;
     }
-
 }
